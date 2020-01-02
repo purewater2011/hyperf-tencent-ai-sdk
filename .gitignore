@@ -6,3 +6,4 @@ phpunit.xml
 .php*
 .travis.yml
 .idea
+.idex/vcs.xml
