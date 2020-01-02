@@ -5,7 +5,7 @@
 ## Installation
 安装:
 
-    composer require hyperf/tencent-ai-sdk
+    composer require hyperf2/tencent-ai-sdk
     
 ## Getting started
 

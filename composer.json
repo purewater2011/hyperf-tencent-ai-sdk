@@ -1,5 +1,5 @@
 {
-    "name": "hyperf/tencent-ai-sdk",
+    "name": "hyperf2/tencent-ai-sdk",
     "type": "library",
     "license": "MIT",
     "keywords": [
