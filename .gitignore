@@ -1,0 +1,8 @@
+/vendor/
+composer.lock
+*.cache
+*.log
+phpunit.xml
+.php*
+.travis.yml
+.idea
