@@ -7,8 +7,6 @@
  */
 
 return [
-    'default' => [
-        'appid' => '',
-        'appsecret' => '',
-    ],
+    'appid' => '',
+    'appsecret' => '',
 ];
