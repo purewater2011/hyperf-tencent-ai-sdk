@@ -26,6 +26,14 @@ class TencentAI extends Client
         $this->appsecret = $appsecret;
     }
 
+    public function handleParams(&$params)
+    {
+        if (empty($params['app_id'])) {
+            $params['app_id'] = $this->appid;
+        }
+        return $params;
+    }
+
     /** texttrans ：调用文本翻译（AI Lab）接口
      * 参数说明
      *   - $params：type-翻译类型；text-待翻译文本。（详见http://ai.qq.com/doc/nlptrans.shtml）
@@ -34,6 +42,7 @@ class TencentAI extends Client
     */
     public function TextTrans($params): array
     {
+        $this->handleParams($params);
         $params['sign'] = Utils::GenSign($params, $this->appsecret);
         $response = $this->request('POST', '/nlp/nlp_texttrans', $params);
         return $response;
@@ -46,6 +55,7 @@ class TencentAI extends Client
      */
     public function IdCardOCR($params)
     {
+        $this->handleParams($params);
         $response = $this->GeneralOCR($params, '/ocr/ocr_idcardocr');
         return $response;
 
@@ -59,6 +69,7 @@ class TencentAI extends Client
     */
     public function GeneralOCR($params, $uri = '/ocr/ocr_generalocr')
     {
+        $this->handleParams($params);
         if (!Utils::IsBase64($params['image'])) {
             $params['image'] = base64_encode($params['image']);
         }
@@ -80,6 +91,7 @@ class TencentAI extends Client
      */
     public function WechatAsrs($params)
     {
+        $this->handleParams($params);
         $speech = Utils::IsBase64($params['speech']) ? base64_decode($params['speech']) : $params['speech'];
         unset($params['speech']);
         $speech_len = strlen($speech);
@@ -112,6 +124,7 @@ class TencentAI extends Client
      */
     public function WechatAsrsPerchunk($params)
     {
+        $this->handleParams($params);
         if (!Utils::IsBase64($params['speech_chunk'])) {
             $params['speech_chunk'] = base64_encode($params['speech_chunk']);
         }
